@@ -23,6 +23,9 @@ type GitHubRepo = {
   size: number;
 };
 
+// Repos that should not appear in the "Latest on GitHub" list.
+const HIDDEN_REPOS = ["vegtable_market"];
+
 // Server-only: fetches public repos and caches the result for an hour so the
 // GitHub rate limit is never hit by visitors.
 export async function getRepos(): Promise<Repo[]> {
@@ -40,7 +43,7 @@ export async function getRepos(): Promise<Repo[]> {
     if (!res.ok) return [];
     const data = (await res.json()) as GitHubRepo[];
     return data
-      .filter((r) => !r.fork && r.size > 0 && r.language)
+      .filter((r) => !r.fork && r.size > 0 && r.language && !HIDDEN_REPOS.includes(r.name))
       .map((r) => ({
         name: r.name,
         description: r.description,

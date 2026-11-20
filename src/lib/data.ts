@@ -17,7 +17,7 @@ export const profile = {
 export const stats = [
   { value: 2.5, suffix: "+", decimals: 1, label: "Years experience" },
   { value: 380, suffix: "+", decimals: 0, label: "PRs merged" },
-  { value: 5, suffix: "+", decimals: 0, label: "Products shipped" },
+  { value: 4, suffix: "+", decimals: 0, label: "Products shipped" },
   { value: 8.48, suffix: "", decimals: 2, label: "CGPA" },
 ];
 
@@ -315,79 +315,6 @@ export const projects: Project[] = [
         "Fast pages with server-side caching",
       ],
     },
-  },
-  {
-    slug: "mandi-ledger",
-    title: "Mandi Ledger",
-    tag: "Personal · Full-stack",
-    layer: "ERP · Finance",
-    blurb:
-      "Full-stack ERP that runs a wholesale vegetable trade: customers, sales, payments, expenses, orders and day-by-day financial reports.",
-    highlights: [
-      "Relational PostgreSQL schema — Customers, Sales, Payments, Expenses, Orders, Funds — via Prisma ORM",
-      "Server Actions for every mutation with targeted cache revalidation",
-      "Daily report engine aggregating sales, payments and expenses with drill-down",
-    ],
-    stack: ["Next.js", "Server Actions", "Prisma", "PostgreSQL", "TypeScript"],
-    details: {
-      role: "Solo developer — design, frontend, backend and database",
-      type: "Personal project · Business app",
-      overview: [
-        "Mandi Ledger is a full-stack business app for a wholesale vegetable trader. It replaces a paper ledger with a digital one: customers, sales, payments, expenses, orders and daily reports in one place.",
-        "I built everything myself — the database schema, the server logic and the interface — and deployed it on Vercel with a PostgreSQL database.",
-      ],
-      problem:
-        "Wholesale traders sell on credit to many shops and track commissions, payments and expenses on paper. Balances drift, and it's hard to know who owes what on any given day.",
-      features: [
-        {
-          title: "Customers & ledger",
-          points: [
-            "Customer profiles with shop names and a full ledger of sales and payments",
-            "Running balance per customer and quick payment capture",
-            "Edit and delete flows for every record",
-          ],
-        },
-        {
-          title: "Sales & payments",
-          points: [
-            "Record sales by vegetable, quantity and rate, with automatic totals and commission",
-            "Payments with sender name and receipt images",
-            "Company funds, expenses and orders tracked alongside sales",
-          ],
-        },
-        {
-          title: "Daily reports",
-          points: [
-            "Day-by-day summaries of sales, payments and expenses",
-            "Drill-down into every activity for a selected date",
-            "Dashboard stats that update instantly after each change",
-          ],
-        },
-      ],
-      architecture: [
-        { layer: "Frontend", items: ["Next.js App Router", "React 19", "TypeScript"] },
-        { layer: "Backend", items: ["Next.js Server Actions", "Cache revalidation"] },
-        { layer: "Database", items: ["PostgreSQL", "Prisma ORM", "Relational schema"] },
-        { layer: "Hosting", items: ["Vercel"] },
-      ],
-      challenges: [
-        {
-          title: "Keeping numbers consistent",
-          text: "One sale changes the dashboard, the customer ledger and the daily report, so each server action revalidates exactly the pages it affects.",
-        },
-        {
-          title: "Modelling money correctly",
-          text: "Sales, payments, commissions, expenses and funds are separate models with clear relations, so balances can always be recalculated from the records.",
-        },
-      ],
-      outcome: [
-        "A working ERP built to replace a paper ledger",
-        "Seven related database models designed with Prisma",
-        "Live on Vercel",
-      ],
-    },
-    live: "https://vegtable-market-rho.vercel.app",
-    repo: "https://github.com/Badrimanda0/vegtable_market",
   },
   {
     slug: "fx-master",
