@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rohith Badri Manda — Portfolio
 
-## Getting Started
+Personal portfolio of a full-stack developer, built with Next.js 16 (App Router, Cache Components), TypeScript, Tailwind CSS v4 and Framer Motion.
 
-First, run the development server:
+## Features
+- Animated hero with an illustrated developer that flips to a waving "Hi!" on hover
+- Welcome toast, scroll progress, magnetic buttons, 3D-tilt cards and scroll-reveal animations
+- Logo tech marquee, experience timeline, skills and a contact form
+- A case-study page for every project at `/projects/[slug]`
+- Light and dark mode, following the system setting
 
+## Backend
+- `POST /api/contact`: contact form validated with Zod, with a honeypot spam trap and per-IP rate limiting. Sends email through Resend when `RESEND_API_KEY` is set; otherwise saves to `data/messages.json` locally.
+- `GET /api/github`: public repos fetched server-side from the GitHub API and cached hourly with `"use cache"`.
+- `GET /api/developer`: the profile as JSON.
+
+## Run locally
 ```bash
+npm install
+cp .env.example .env.local   # optional
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Edit content
+All text lives in `src/lib/data.ts`: profile, stats, projects and their case studies, experience and skills.
+To use a photo in the hero, add `public/profile.jpg`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy
+Import the repo into Vercel. Add `RESEND_API_KEY` (and optionally `GITHUB_TOKEN`) under Project → Settings → Environment Variables.
