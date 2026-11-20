@@ -17,7 +17,7 @@ export const profile = {
 export const stats = [
   { value: 2.5, suffix: "+", decimals: 1, label: "Years experience" },
   { value: 380, suffix: "+", decimals: 0, label: "PRs merged" },
-  { value: 4, suffix: "+", decimals: 0, label: "Products shipped" },
+  { value: 5, suffix: "+", decimals: 0, label: "Products shipped" },
   { value: 8.48, suffix: "", decimals: 2, label: "CGPA" },
 ];
 
@@ -231,6 +231,90 @@ export const projects: Project[] = [
       ],
     },
     live: "https://bharatcover.net",
+  },
+  {
+    slug: "coinpulse",
+    title: "CoinPulse",
+    tag: "Personal · Full-stack",
+    layer: "Live Crypto Market Tracker",
+    blurb:
+      "Real-time cryptocurrency dashboard with live prices, interactive charts, a watchlist and a converter — powered by the CoinGecko API through a cached Next.js backend.",
+    highlights: [
+      "Markets table for 100+ coins with sorting, filters, pagination and hand-built SVG sparklines",
+      "Coin pages with an interactive 24H–1Y price chart, stats, all-time highs and a two-way converter",
+      "Own API routes proxy CoinGecko with caching and request de-duplication, so the API key never reaches the browser",
+    ],
+    stack: ["Next.js", "React 19", "TypeScript", "Route Handlers", "CoinGecko API", "Tailwind CSS v4"],
+    details: {
+      role: "Solo developer — design, frontend and backend",
+      type: "Personal project · Fintech / Crypto",
+      overview: [
+        "CoinPulse is a live cryptocurrency market tracker, similar in purpose to CoinMarketCap. It shows current prices and trends, price history on interactive charts, trending coins, top movers, exchanges and categories.",
+        "All market data comes live from the CoinGecko API. Server Components fetch and cache data on the server, while interactive parts — the chart, search and watchlist — call the app's own API routes.",
+        "It is built with no extra UI or chart libraries: the price chart, sparklines and icons are all hand-built with SVG.",
+      ],
+      problem:
+        "Crypto prices change every minute, but free market APIs are heavily rate-limited. The app needed to feel live and fast while making as few API calls as possible — and without exposing the API key.",
+      features: [
+        {
+          title: "Markets overview",
+          points: [
+            "Global market cap, 24h volume, BTC/ETH dominance and active coins",
+            "Trending coins, top gainers and top losers",
+            "Markets table with 100 coins per page, sortable columns, quick filter and 7-day sparklines",
+          ],
+        },
+        {
+          title: "Coin detail pages",
+          points: [
+            "Interactive price chart (24H / 7D / 30D / 90D / 1Y) with hover and touch tooltips",
+            "24h range bar, performance tiles, supply stats, all-time high and low, community sentiment",
+            "Two-way currency converter on every coin page",
+          ],
+        },
+        {
+          title: "Search, watchlist & currencies",
+          points: [
+            "Global search palette (Ctrl K or /) with debouncing and keyboard navigation",
+            "Watchlist saved in the browser with a live summary",
+            "Seven display currencies (USD, EUR, GBP, INR, JPY, AUD, CAD), remembered in a cookie",
+          ],
+        },
+        {
+          title: "Exchanges, categories & polish",
+          points: [
+            "Exchanges ranked by trust score; categories open as filtered market lists",
+            "Loading skeletons, error boundary with retry, custom 404 and SEO metadata",
+            "Clean, minimal design that works down to mobile",
+          ],
+        },
+      ],
+      architecture: [
+        { layer: "Frontend", items: ["Next.js App Router", "React 19", "TypeScript", "Tailwind CSS v4", "SVG charts"] },
+        { layer: "Backend", items: ["Route Handlers (/api/markets, /chart, /search)", "Server Components", "Typed API client"] },
+        { layer: "Data", items: ["CoinGecko API", "Server-side caching", "Request de-duplication"] },
+        { layer: "Browser", items: ["localStorage watchlist", "Cookie currency preference"] },
+      ],
+      challenges: [
+        {
+          title: "Working within API rate limits",
+          text: "The typed API client caches responses and shares in-flight requests, so many visitors asking for the same data trigger only one call to CoinGecko.",
+        },
+        {
+          title: "Keeping the API key secret",
+          text: "Client components never call CoinGecko directly; they go through the app's own API routes, which add the key on the server.",
+        },
+        {
+          title: "Charts without a chart library",
+          text: "I built the price chart and sparklines from scratch with SVG, including hover and touch tooltips, to keep the bundle small.",
+        },
+      ],
+      outcome: [
+        "A complete crypto dashboard on live market data",
+        "Zero extra UI or chart libraries",
+        "Fast pages with server-side caching",
+      ],
+    },
   },
   {
     slug: "mandi-ledger",

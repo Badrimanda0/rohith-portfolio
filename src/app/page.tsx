@@ -33,6 +33,7 @@ const projectThemes = [
   "from-slate-700 to-slate-600",
   "from-zinc-800 to-zinc-700",
   "from-slate-600 to-slate-500",
+  "from-blue-700 to-indigo-600",
 ];
 
 async function Year() {

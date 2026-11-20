@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps<"/projects/[slug]">
   };
 }
 
-const themes = ["from-blue-600 to-blue-500", "from-slate-700 to-slate-600", "from-zinc-800 to-zinc-700", "from-slate-600 to-slate-500"];
+const themes = ["from-blue-600 to-blue-500", "from-slate-700 to-slate-600", "from-zinc-800 to-zinc-700", "from-slate-600 to-slate-500", "from-blue-700 to-indigo-600"];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return <h2 className="text-sm font-semibold uppercase tracking-widest text-accent">{children}</h2>;
