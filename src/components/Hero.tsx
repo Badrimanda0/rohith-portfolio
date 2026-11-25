@@ -36,7 +36,6 @@ export default function Hero({ photo }: { photo?: string }) {
   return (
     <section id="top" className="relative isolate overflow-hidden">
       {/* Background */}
-      <div className="bg-dots pointer-events-none absolute inset-0 -z-10" />
       <div className="pointer-events-none absolute right-0 top-20 -z-10 size-[26rem] animate-blob rounded-full bg-accent/5 blur-3xl" />
 
       <div className="mx-auto grid max-w-6xl items-center gap-16 px-5 pb-16 pt-32 sm:px-8 sm:pt-36 lg:min-h-[calc(100svh-5rem)] lg:grid-cols-[1.25fr_1fr] lg:pb-10">
@@ -65,7 +64,7 @@ export default function Hero({ photo }: { photo?: string }) {
               <motion.span key={i} variants={item} className="relative mr-[0.25em] inline-block">
                 {w === "scalable" || w === "database" ? (
                   <>
-                    <span className="text-accent">{w}</span>
+                    <span className="text-shimmer">{w}</span>
                     <motion.span
                       aria-hidden="true"
                       initial={reduce ? false : { scaleX: 0 }}
